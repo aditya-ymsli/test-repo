@@ -28,9 +28,10 @@ const closeDetailsTagBtn = ref();
 const refreshBtn = ref();
 const spaBtn = ref();
 const nameInput = ref();
+const age = ref();
 
 const formData = reactive({
-  nameInput: '',
+  nameInput: '', age: undefined,
 });
 
 const openDetailsBtnClick = () => {
@@ -139,6 +140,21 @@ function openTagHere() {
         v-model="formData.nameInput"
 
         data-type="string"
+      />
+    </VueFormItem>
+
+    <VueFormItem
+
+      label="Age"
+
+      prop="age"
+    >
+      <VueInputNumber
+
+        id="age"
+        ref="age"
+
+        v-model="formData.age"
       />
     </VueFormItem>
   </VueForm>
