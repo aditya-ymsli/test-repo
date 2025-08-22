@@ -1,0 +1,19 @@
+{
+  "label" : {
+    "firstName" : "chinese-Fname",
+    "hobbies" : "Hobbies(chinese)",
+    "lastName" : "chinese-Lname",
+    "gender" : "Gender(Chinese)",
+    "calendar" : "Chinese Calendar",
+    "description" : "Chinese-Descrption",
+    "dob" : "Chinese DOB"
+  },
+  "button" : {
+    "printBtn" : "Chinese-Button",
+    "setBtn" : "Chinese-Button"
+  },
+  "error" : {
+    "required" : "Required in Chinese",
+    "maxlength" : "Max word limit has been reached in chinese"
+  }
+}

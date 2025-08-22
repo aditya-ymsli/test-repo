@@ -1,0 +1,19 @@
+{
+  "label" : {
+    "firstName" : "japanese-Fname",
+    "hobbies" : "Hobbies(japanese)",
+    "lastName" : "japanese-Lname",
+    "gender" : "Gender(Japanese)",
+    "calendar" : "Japanese Calendar",
+    "description" : "Japanese-Description",
+    "dob" : "Japanese DOB"
+  },
+  "button" : {
+    "printBtn" : "Japanese-Button",
+    "setBtn" : "Japanese-Button"
+  },
+  "error" : {
+    "required" : "Required in Japanese",
+    "maxlength" : "Max word limit has been reached in japanese"
+  }
+}

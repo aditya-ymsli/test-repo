@@ -1,0 +1,19 @@
+{
+  "label" : {
+    "firstName" : "First-Name",
+    "hobbies" : "Hobbies",
+    "lastName" : "Last-Name",
+    "gender" : "Gender",
+    "calendar" : "Calendar",
+    "description" : "Description-TextArea",
+    "dob" : "Date of Birth"
+  },
+  "button" : {
+    "printBtn" : "Print-Button",
+    "setBtn" : "Set-Button"
+  },
+  "error" : {
+    "required" : "This is a required field",
+    "maxlength" : "Max word limit has been reached"
+  }
+}
