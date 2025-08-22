@@ -1,0 +1,77 @@
+name: Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "**"
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        uses: ./.github/actions/build
+        with:
+          node_version: 20.x
+
+      - name: Test
+        run: pnpm run test
+      - name: Upload front test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: front-test-results
+          path: test-reports
+          retention-days: 3
+
+  report:
+    name: Generate Front Testing Report
+    if: always()
+    needs: test
+    runs-on: ubuntu-latest
+    permissions: write-all
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download JUnit test results
+        uses: actions/download-artifact@v4
+        with:
+          name: front-test-results
+          path: test-reports
+
+      - name: Export Title
+        run: echo "## Test Report" >> $GITHUB_STEP_SUMMARY
+
+      - name: Test Report
+        id: test_reporter
+        uses: dorny/test-reporter@v2
+        if: always()
+        with:
+          name: Front Testing Summary Report
+          path: 'test-reports/report.xml'
+          reporter: java-junit
+          max-annotations: 50
+          list-tests: failed
+          list-suites: all
+          only-summary: false
+          fail-on-error: false
+
+      - name: 'Coverage Report'
+        if: always()
+        uses:  davelosert/vitest-coverage-report-action@v2
+        with:
+          json-summary-path: './test-reports/coverage/coverage-summary.json'
+          json-final-path: './test-reports/coverage/coverage-final.json'
+          file-coverage-mode: 'all'
